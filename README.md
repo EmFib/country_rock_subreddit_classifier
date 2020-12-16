@@ -22,6 +22,7 @@ To help you get started, we have a primer video on how to use the API: https://y
 - Gather and prepare your data using the `requests` library.
 - **Create and compare at least two models**. These can be any classifier of your choosing: logistic regression, Naive Bayes, KNN, SVM, Random Forest Classifier, etc.
   - **Bonus**: use a Naive Bayes classifier
+- Build a robust commit history on github and GHE for this project: at least three commits separated by at least 24 hours each  
 - A Jupyter Notebook with your analysis for a peer audience of data scientists.
 - An executive summary of your results.
 - A short presentation outlining your process and findings for a semi-technical audience.
