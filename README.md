@@ -1,168 +1,166 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 3: Web APIs & NLP
+# **TALK THE TALK, WALK THE WALK**
 
-### Description
+## Table of Contents
 
-In week four we've learned about a few different classifiers. In week five we'll learn about webscraping, APIs, and Natural Language Processing (NLP). This project will put those skills to the test.
-
-For project 3, your goal is two-fold:
-1. Using [Pushshift's](https://github.com/pushshift/api) API, you'll collect posts from two subreddits of your choosing.
-2. You'll then use NLP to train a classifier on which subreddit a given post came from. This is a binary classification problem.
-
-
-#### About the API
-
-Pushshift's API is fairly straightforward. For example, if I want the posts from [`/r/boardgames`](https://www.reddit.com/r/boardgames), all I have to do is use the following url: https://api.pushshift.io/reddit/search/submission?subreddit=boardgames
-
-To help you get started, we have a primer video on how to use the API: https://youtu.be/AcrjEWsMi_E
-
----
-
-### Requirements
-
-- Gather and prepare your data using the `requests` library.
-- **Create and compare at least two models**. These can be any classifier of your choosing: logistic regression, Naive Bayes, KNN, SVM, Random Forest Classifier, etc.
-  - **Bonus**: use a Naive Bayes classifier
-- Build a robust commit history on github and GHE for this project: at least three commits separated by at least 24 hours each  
-- A Jupyter Notebook with your analysis for a peer audience of data scientists.
-- An executive summary of your results.
-- A short presentation outlining your process and findings for a semi-technical audience.
-
-**Pro Tip:** You can find a good example executive summary [here](https://www.proposify.biz/blog/executive-summary).
-
----
-
-### Necessary Deliverables / Submission
-
-- Code and executive summary must be in a clearly commented Jupyter Notebook.
-- You must submit your slide deck.
-- Materials must be submitted by **11:59 PM PST on Friday, January 8th 2021**.
-- Presentation must be ready by **09:00 AM PST on Friday, January 8th 2021**.
-
----
-
-## Rubric
-Your local instructor will evaluate your project (for the most part) using the following criteria.  You should make sure that you consider and/or follow most if not all of the considerations/recommendations outlined below **while** working through your project.
-
-For Project 3 the evaluation categories are as follows:<br>
-**The Data Science Process**
-- Problem Statement
-- Data Collection
-- Data Cleaning & EDA
-- Preprocessing & Modeling
-- Evaluation and Conceptual Understanding
-- Conclusion and Recommendations
-
-**Organization and Professionalism**
-- Organization
-- Visualizations
-- Python Syntax and Control Flow
-- Presentation
-
-**Scores will be out of 30 points based on the 10 categories in the rubric.** <br>
-*3 points per section*<br>
-
-| Score | Interpretation |
-| --- | --- |
-| **0** | *Project fails to meet the minimum requirements for this item.* |
-| **1** | *Project meets the minimum requirements for this item, but falls significantly short of portfolio-ready expectations.* |
-| **2** | *Project exceeds the minimum requirements for this item, but falls short of portfolio-ready expectations.* |
-| **3** | *Project meets or exceeds portfolio-ready expectations; demonstrates a thorough understanding of every outlined consideration.* |
+- [Executive Summary](#Executive-Summary)
+- [Data Collection](#Data-Collection)
+- [Data Cleaning & Pre-Processing](#Data-Cleaning-&-Pre-Processing)
+- [EDA](#EDA)
+- [Modeling](#Modeling)
+- [Evaluation & Analysis](#Evaluation-&-Analysis)
+- [Conclusion & Recommendations](#Conclusion-&-Recommendations)
+- [Next Steps & Future work](#Next-Steps-&-Future-work)
 
 
-### The Data Science Process
 
-**Problem Statement**
-- Is it clear what the goal of the project is?
-- What type of model will be developed?
-- How will success be evaluated?
-- Is the scope of the project appropriate?
-- Is it clear who cares about this or why this is important to investigate?
-- Does the student consider the audience and the primary and secondary stakeholders?
+## Executive Summary
 
-**Data Collection**
-- Was enough data gathered to generate a significant result?
-- Was data collected that was useful and relevant to the project?
-- Was data collection and storage optimized through custom functions, pipelines, and/or automation?
-- Was thought given to the server receiving the requests such as considering number of requests per second?
+What's your favorite kind of music? Do you know what draws you to this genre -- the tempo, the instrumentation, the arrangements, the lyrics? For a lot of fans of country-western music, the lyrics and the stories are what draws them in. This might be different from fans of rock music, who are more turned on by the drum beats and the guitar solos.
 
-**Data Cleaning and EDA**
-- Are missing values imputed/handled appropriately?
-- Are distributions examined and described?
-- Are outliers identified and addressed?
-- Are appropriate summary statistics provided?
-- Are steps taken during data cleaning and EDA framed appropriately?
-- Does the student address whether or not they are likely to be able to answer their problem statement with the provided data given what they've discovered during EDA?
+In this analysis, I look at large corpuses of written discussion about country and rock to see what patterns emerge from the commentary. What do country music fans talk about that rock music fans eschew, and vice versa? Can we divine the topic of the discussion by looking only at the language used by the fans of the two distinct genres?
 
-**Preprocessing and Modeling**
-- Is text data successfully converted to a matrix representation?
-- Are methods such as stop words, stemming, and lemmatization explored?
-- Does the student properly split and/or sample the data for validation/training purposes?
-- Does the student test and evaluate a variety of models to identify a production algorithm (**AT MINIMUM:** two classification models, **BONUS:** try a Naive Bayes)?
-- Does the student defend their choice of production model relevant to the data at hand and the problem?
-- Does the student explain how the model works and evaluate its performance successes/downfalls?
+As certain patterns in the language emerge, can they then inform what is to come in these genres? I believe we can. Pulling oft-repeated words and phrases out a heated discussion amongst fans about current country music releases can easily inform what a country music songwriter might want to address in their next hit! If those words are highly distinct from the words use by fans of rock and roll, the trend is even more salient, as they are clearly nearest and dearest to hearts of the country music fanbase and not the music community at large.
 
-**Evaluation and Conceptual Understanding**
-- Does the student accurately identify and explain the baseline score?
-- Does the student select and use metrics relevant to the problem objective?
-- Does the student interpret the results of their model for purposes of inference?
-- Is domain knowledge demonstrated when interpreting results?
-- Does the student provide appropriate interpretation with regards to descriptive and inferential statistics?
+To that end, I will a body of posts from both the country music subreddit and the rock music subreddit to show how the language of the posters itself can reveal the genre about which they are speaking. Beyond that, I will show that certain words lend themselves to this differentiation, and therefore can reveal the most important and interesting topics -- and thus words! -- to followers of each genre.
 
-**Conclusion and Recommendations**
-- Does the student provide appropriate context to connect individual steps back to the overall project?
-- Is it clear how the final recommendations were reached?
-- Are the conclusions/recommendations clearly stated?
-- Does the conclusion answer the original problem statement?
-- Does the student address how findings of this research can be applied for the benefit of stakeholders?
-- Are future steps to move the project forward identified?
+I investigate a variety of classification models to help solve this problem. By using the NLP process to vectorize and classify the language in the subreddits, we can find out what words are the most important in determining the class (i.e. subreddit) of the post and therefore see the words and topics that are currently get the most attention from the posters.  
 
+#### *Why Do I Care?*
 
-### Organization and Professionalism
+Good question!
 
-**Project Organization**
-- Are modules imported correctly (using appropriate aliases)?
-- Are data imported/saved using relative paths?
-- Does the README provide a good executive summary of the project?
-- Is markdown formatting used appropriately to structure notebooks?
-- Are there an appropriate amount of comments to support the code?
-- Are files & directories organized correctly?
-- Are there unnecessary files included?
-- Do files and directories have well-structured, appropriate, consistent names?
+No, I didn't just waste many hours of work to tell country music artists to sing about love, trucks, country, and mama. This analysis digs deep to help musicians, songwriters, and fans alike better understand what themes are at the heart of the music they love by dissecting the language they all use to talk about it. The data is drawn from the passionate commentary of the listeners themselves, so it tells an important story that is based on far more than conjecture: a data-driven report on what music fans care about the most.
 
-**Visualizations**
-- Are sufficient visualizations provided?
-- Do plots accurately demonstrate valid relationships?
-- Are plots labeled properly?
-- Are plots interpreted appropriately?
-- Are plots formatted and scaled appropriately for inclusion in a notebook-based technical report?
+Better yet, the breakdown is genre specific! Using robust classification algorithms, my analysis shows clearly that armchair rock music critics aren't saying the same thing as their country-western counterparts. While this report examines only two genres, I wholeheartedly believe that it can be applied across all types of music: classical, reggae,
 
-**Python Syntax and Control Flow**
-- Is care taken to write human readable code?
-- Is the code syntactically correct (no runtime errors)?
-- Does the code generate desired results (logically correct)?
-- Does the code follows general best practices and style guidelines?
-- Are Pandas functions used appropriately?
-- Are `sklearn` and `NLTK` methods used appropriately?
+While there are many applications of this examination, my hope is that this helps artists, producers, venue owners, and music industry execs know what themes are currently resonating with their fan base. This will inform song composition, tour schedules, media market press packs, and so much more!  
 
-**Presentation**
-- Is the problem statement clearly presented?
-- Does a strong narrative run through the presentation building toward a final conclusion?
-- Are the conclusions/recommendations clearly stated?
-- Is the level of technicality appropriate for the intended audience?
-- Is the student substantially over or under time?
-- Does the student appropriately pace their presentation?
-- Does the student deliver their message with clarity and volume?
-- Are appropriate visualizations generated for the intended audience?
-- Are visualizations necessary and useful for supporting conclusions/explaining findings?
+If the fans are talking the talk, the musicians can walk the walk -- all supported by data!
+
+The Solution!
+
+With a clear analysis, I will help show the distinctive language being used by fans of different types of musics. In short, this will serve to unite fans and music professionals and help them find integrated ways to produce, market, and disseminate music, so that what the people want is what people get.
+
+## Data Collection
+
+*See notebook: [01_Web_Scraping_&_Data_Collection](projects/project_3/code/01_Web_Scraping_&_Data_Collection.ipynb)*
+
+To perform the modeling, I collected actual posts from two very popular and prolific subreddits: [country music](https://www.reddit.com/r/country/) and [rock music](https://www.reddit.com/r/rock/) ("Rock music in all its forms."), which have 24.7K and 46.4K members, respectively. I used the 3000 most recent posts from each subreddit, and they were posted between June 25, 2020 and January 6, 2020. While the raw dataset had 77 features, I decided
+
+## Data Cleaning & Pre-Processing
+
+*See notebook: [02_Data_Cleaning](projects/project_3/code/02_Data_Cleaning.ipynb)*
+
+Fortunately, the natural language data coming out of Reddit was fairly clean directly after scraping. I performed the following steps to get my data ready for Exploratory Data Analysis (EDA):
+
++ Put data into pandas DataFrame
++ Added a new column called `datetime` which converts the UTC time Reddit provides into a human-readable date
++ Added a new column called `merged` which joined the `title` and `selftext` columns that came out of Reddit. (`selftext` is thet body of the post.)
++ Added a column called `label` that would indicate the class of the post
++ Removed special characters, hyperlinks, and some numbers.
++ converted all letters to lowercase
++ Got rid of null values, though there were very few.
++ Created a new column called `tokens` by applying the `RegexpTokenizer(r'\w+')` to the `merged column`
++ Created a new column called  `stemmed` by applying the `SnowballStemmer(language='english')` to the `tokens` column, then joined these back together into a string for a new column called `combo`. I did end not end up using the `stemmed` or `combo` columns because the stemmed words proved to be detrimental to my analysis and visualizations, so eventually I removed these columns before pickling my DataFrames to be used in models.
+
+Once the two DataFrames were nice and clean, with the right columns, I pickled both of them as `country_token_pickle.pkl` and `rock_token_pickle.pkl`, respectively.
+
+## EDA
+
+*See notebook: [03 - EDA_&_Model_Prep](projects/project_3/code/03_EDA_&_Model_Prep.ipynb)*
+
+I first went back and looked at each of the two original DataFrames in their cleaned but not-yet-concatenated forms. Using my function `vectorize_and_plot`, I fit and transformed the `merged` column using `CountVectorizer` the used matplotlib to create plot showing the 15 most common words in each DataFrame. Not to be confused with the word importance plots that I build after modeling, the word frequency plots allowed me to see which word were most common and thereby informed my custom list of stop words for future use in modeling.
+
+!['frequencies'](./code/frequency.png)
+
+```python
+country_rock_stop_words = ['country', 'countries', 'rock', 'roll', 'just','song', 'songs', 'music', 'album', 'band', 'bands', 'artist', 'artists', 've', 'don']
+```
+I chose to remove words that are most common in one or both of the subreddits because, while some of them might help improve accuracy, they weaken the storyline and impair the ability of models to detect important words and features by drawing heavy attention to themselves and thereby skewing coefficients and feature importance distribution. I removed "ve" and "don" because my pre-processing created these from contracted words, and they ended up showing up very frequently. In the future I would modify my pre-processing to fix this problem, but I ran out of time to do so.
+
+The next EDA step was to inspect the lengths of the subreddit posts. For each of the DataFrames, I looked at the distribution, mean, minimum, and maximum of the post lengths by applying my post_length_distribution function.
+
+Since there didn't appear to be any extremely long posts that would distort my modeling, and a scan of the shortest posts (<= 3 words) indicated that these very short ones were still valuable, I decided not to remove any posts based on length.  
+
+I concatenated the till-now separate country and rock DataFrames into one DataFrame called `country_rock` and converted the values in the `label` column to binary numeric labels 0 and 1. The new DataFrame included 6000 rows -- 3000 from each subreddit -- because I had not had to drop any rows during preprocessing.
+
+Finally, I saved my combined DataFrame as `country_rock.pkl` for use in modeling.
+
+## Modeling
+
+My first model was my baseline model, which actually included no machine learning. I took the value counts of my target variable `y`(`country_rock['label']`) by running `y.value_counts(normalize=True)`. The output show the 0.5 of the total have label 1 (rock subreddit) and 0.5 have label 0 (country subreddit). Thus the accuracy of my baseline model is 50%, i.e. if we were to predict that all of the posts are from the country music subreddit, we would be right 50% of the time.
+
+#### Vectorization
+In order to do any ML models, I would need to vectorize the natural language data first. As I tried different models, I paired them with either `CountVectorizer` or `Tf-Idf Vectorizer` to see which gave better results.
+
+#### Choosing an Estimator
 
 
----
+My ultimate goal was to find a classification model that:
+1. Could identify the class of a subreddit with the greatest accuracy possible.
+2. Minimized error due to variance i.e. is not too overfit.
+3. Relates to my problem statement and could be used in viable analysis; ideally it would be interpretable and provide valuable insights.
 
-### Why did we choose this project for you?
-This project covers three of the biggest concepts we cover in the class: Classification Modeling, Natural Language Processing and Data Wrangling/Acquisition.
+From there, modeling occurred in two stages.
 
-Part 1 of the project focuses on **Data wrangling/gathering/acquisition**. This is a very important skill as not all the data you will need will be in clean CSVs or a single table in SQL.  There is a good chance that wherever you land you will have to gather some data from some unstructured/semi-structured sources; when possible, requesting information from an API, but often scraping it because they don't have an API (or it's terribly documented).
+First, I performed a series of grid searches to identify the optimal estimator and hyperparameters for my final model. *(See notebook: [04_Model_Benchmarking](projects/project_3/code/04_Model_Benchmarking.ipynb)).* I ran grid searches on the following vectorizer + classifier pairings (check out the notebook for the hyperparameters I searched over to tune):
 
-Part 2 of the project focuses on **Natural Language Processing** and converting standard text data (like Titles and Comments) into a format that allows us to analyze it and use it in modeling.
++ Countvectorizer + Logistic Regression
++ Tf-Idf + Logistic Regression
++ CountVectorizer + Multinomial Naïve Bayes
++ Tf-Idf + Multinomial Naïve Bayes
++ CountVectorizer + k-Nearest Neighbors
++ CountVectorizer + Extra Trees Classifier
++ Tf-Idf + Random Forest Classifier
++ CountVectorizer + Support Vector Classifier
 
-Part 3 of the project focuses on **Classification Modeling**.  Given that project 2 was a regression focused problem, we needed to give you a classification focused problem to practice the various models, means of assessment and preprocessing associated with classification.   
+For each of these, I performed an inital evaluation to know whether to tweak it or consider it for use in my final analysis. I found the best parameters, train test accuracy, test set accuracy, and overall accuracy (`.best_score_`) for each grid search.
+
+I also plotted the confusion matrix to see where the false negatives and false positives were occurring. I thought this might inform some portion of my analysis, but in the end I used only as my evaluation metric. Since accuracy views all misclassifications as equal, the information in the confusion matrices is no longer relevant to my final analysis. However, they help me understand how my models are performing so I left them in my `04_Model_Benchmarking` notebook.
+
+Given my initial objectives for my favorite model, above, I decided first to use my Tf-Idf + Logistic Regression combo for my final model and evaluation. This classification had reasonably good accuracy -- 82% on the testing set -- and, while being overfit, was not ostentatiously so. (Accuracy on the training set was 92%.) Moreover, accuracy was not my primary concern in this process because what I was hoping to do ultimately was to draw out the most important words in each of the models. So alas, the most significant reason for me choosing the Logistic Regression classifier is because it offers interpretable coefficients for my features -- words, in this case -- which was important given my stated goal of drawing out trends in the data via important words.
+
+In the next notebook (*see [05_Modeling_&_Evaluation_&_Visualizations](projects/project_3/code/05_Modeling_&_Evaluation_&_Visualizations.ipynb)*), I executed the Tf-Idf-vectorized Logistic Regression model with the best hyperparameters selected by the grid search. I did so using `Pipeline` in two stages.
+
+## Evaluation & Analysis
+
+I then used this fit pipeline to execute my `find_most_important_words` and `plot_most_important_words` functions. Plotting the top 25 most important words from each subreddit yielded the following figures:
+
+![importances](./code/importance.png)
+
+This plot clearly show the most important words in classifying these subreddits, which speaks directly to the problem statement in my executive summary. This, in turn, performs the task for which I was hoping: drawing out the trends of the discussion in the subreddit.
+
+Importantly, simply for the purposes of visualization, I used Principle Component Analysis to reduce my 14,594 features down to two dimensions so that the vectorized country-rock DataFrame could be represented in a scatter plot.
+
+![binary](./code/binary.png)
+
+The purpose of this plot is merely to represent how to the two classes, while overlapping, are indeed somewhat distinct from each other. This bolsters the analysis by further reinforcing that the word importances being pulled out of the model are distinctive to that subreddit as opposed to being more general.
+
+## Conclusion & Recommendations
+
+And there you go! If you wish to know what's on the hearts and minds of fans of country and rock music; if you wish to speak to what is resonating with them; to write salient songs; to market and advertise profitably; to book shows that will sell out: start with this list of words and names.
+
+## Next Steps & Future work
+
+With more time and a bigger scope, there's a whole lot more I would like to do with the Reddit database and this concept. First and foremost:
+
++ Incorporate other NLP modeling techniques, such as spaCy and/or Word2vec.
++ Run additional Tree/Ensemble models and find feature importances to see whether they mimic the coefficients in the Logistic Regression model.
++ Examine features beyond word use, e.g. post length (in modeling) and sentiment analysis.
++ Gather more data - more subreddits, more genres, more posts!
+
+## Acknowledgements
+
+While I offer ample credit throughout my notebooks where I received help from others, I want to give an additional shoutout here to the people without whom this project would never have come to completion:
+
++ Charlie Rice
++ Hovanes Gasparian
++ Prasoon Karmacharya
++ John D. Hazard
++ James Opacich
++ Heather Johansen
++ Jesse Tao
++ Kira Helm
++ CM Vigil April
+
+All these people spent time, care, energy, lifeblood to help me get here. Thank you. 
