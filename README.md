@@ -19,9 +19,9 @@ What's your favorite kind of music? Do you know what draws you to this genre -- 
 
 In this analysis, I look at large corpuses of written discussion about country and rock to see what patterns emerge from the commentary. What do country music fans talk about that rock music fans eschew, and vice versa? Can we divine the topic of the discussion by looking only at the language used by the fans of the two distinct genres?
 
-As certain patterns in the language emerge, can they then inform what is to come in these genres? I believe we can. Pulling oft-repeated words and phrases out a heated discussion amongst fans about current country music releases can easily inform what a country music songwriter might want to address in their next hit! If those words are highly distinct from the words use by fans of rock and roll, the trend is even more salient, as they are clearly nearest and dearest to hearts of the country music fanbase and not the music community at large.
+As certain patterns in the language emerge, can they then inform what is to come in these genres? I believe they can. Pulling oft-repeated words and phrases out a heated discussion amongst fans about current country music releases can easily inform what a country music songwriter might want to address in their next hit! If those words are highly distinct from the words use by fans of rock and roll, the trend is even more salient, as they are clearly nearest and dearest to hearts of the country music fanbase and not the music community at large.
 
-To that end, I will a body of posts from both the country music subreddit and the rock music subreddit to show how the language of the posters itself can reveal the genre about which they are speaking. Beyond that, I will show that certain words lend themselves to this differentiation, and therefore can reveal the most important and interesting topics -- and thus words! -- to followers of each genre.
+To that end, I will analyze a body of posts from both the country music subreddit and the rock music subreddit to show how the language of the posters itself can reveal the genre about which they are speaking. Beyond that, I will show that certain words lend themselves to this differentiation, and therefore can reveal the most important and interesting topics -- and thus words! -- to followers of each genre.
 
 I investigate a variety of classification models to help solve this problem. By using the NLP process to vectorize and classify the language in the subreddits, we can find out what words are the most important in determining the class (i.e. subreddit) of the post and therefore see the words and topics that are currently get the most attention from the posters.  
 
@@ -31,13 +31,13 @@ Good question!
 
 No, I didn't just waste many hours of work to tell country music artists to sing about love, trucks, country, and mama. This analysis digs deep to help musicians, songwriters, and fans alike better understand what themes are at the heart of the music they love by dissecting the language they all use to talk about it. The data is drawn from the passionate commentary of the listeners themselves, so it tells an important story that is based on far more than conjecture: a data-driven report on what music fans care about the most.
 
-Better yet, the breakdown is genre specific! Using robust classification algorithms, my analysis shows clearly that armchair rock music critics aren't saying the same thing as their country-western counterparts. While this report examines only two genres, I wholeheartedly believe that it can be applied across all types of music: classical, reggae,
+Better yet, the breakdown is genre specific! Using robust classification algorithms, my analysis shows clearly that armchair rock music critics aren't saying the same thing as their country-western counterparts. While this report examines only two genres, I wholeheartedly believe that it can be applied across all types of music: classical, reggae, hiphop, etc.
 
 While there are many applications of this examination, my hope is that this helps artists, producers, venue owners, and music industry execs know what themes are currently resonating with their fan base. This will inform song composition, tour schedules, media market press packs, and so much more!  
 
 If the fans are talking the talk, the musicians can walk the walk -- all supported by data!
 
-The Solution!
+#### *The Solution!*
 
 With a clear analysis, I will help show the distinctive language being used by fans of different types of musics. In short, this will serve to unite fans and music professionals and help them find integrated ways to produce, market, and disseminate music, so that what the people want is what people get.
 
@@ -71,7 +71,7 @@ Once the two DataFrames were nice and clean, with the right columns, I pickled b
 
 I first went back and looked at each of the two original DataFrames in their cleaned but not-yet-concatenated forms. Using my function `vectorize_and_plot`, I fit and transformed the `merged` column using `CountVectorizer` the used matplotlib to create plot showing the 15 most common words in each DataFrame. Not to be confused with the word importance plots that I build after modeling, the word frequency plots allowed me to see which word were most common and thereby informed my custom list of stop words for future use in modeling.
 
-!['frequencies'](./code/frequency.png)
+!['frequencies'](./code/figures/frequency.png)
 
 ```python
 country_rock_stop_words = ['country', 'countries', 'rock', 'roll', 'just','song', 'songs', 'music', 'album', 'band', 'bands', 'artist', 'artists', 've', 'don']
@@ -126,13 +126,13 @@ In the next notebook (*see [05_Modeling_&_Evaluation_&_Visualizations](projects/
 
 I then used this fit pipeline to execute my `find_most_important_words` and `plot_most_important_words` functions. Plotting the top 25 most important words from each subreddit yielded the following figures:
 
-![importances](./code/importance.png)
+![importances](./code/figures/importance.png)
 
 This plot clearly show the most important words in classifying these subreddits, which speaks directly to the problem statement in my executive summary. This, in turn, performs the task for which I was hoping: drawing out the trends of the discussion in the subreddit.
 
 Importantly, simply for the purposes of visualization, I used Principle Component Analysis to reduce my 14,594 features down to two dimensions so that the vectorized country-rock DataFrame could be represented in a scatter plot.
 
-![binary](./code/binary.png)
+![binary](./code/figures/binary.png)
 
 The purpose of this plot is merely to represent how to the two classes, while overlapping, are indeed somewhat distinct from each other. This bolsters the analysis by further reinforcing that the word importances being pulled out of the model are distinctive to that subreddit as opposed to being more general.
 
@@ -163,4 +163,4 @@ While I offer ample credit throughout my notebooks where I received help from ot
 + Kira Helm
 + CM Vigil April
 
-All these people spent time, care, energy, lifeblood to help me get here. Thank you. 
+All these people spent time, care, energy, lifeblood to help me get here. Thank you.
